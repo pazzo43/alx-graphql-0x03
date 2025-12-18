@@ -72,3 +72,41 @@ ready - started server on http://localhost:3000
 Open your browser and visit:
 
 http://localhost:3000
+
+###### Open _app.tsx
+pages/_app.tsx
+
+###### Import ErrorBoundary
+import type { AppProps } from "next/app";
+import ErrorBoundary from "@/components/ErrorBoundary";
+
+###### Wrap the Component with ErrorBoundary
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <ErrorBoundary>
+      <Component {...pageProps} />
+    </ErrorBoundary>
+  );
+}
+
+export default MyApp;
+
+###### Save and Close Files
+Make sure:
+
+_app.tsx is saved
+
+No TypeScript errors appear
+
+###### Run the Development Server
+npm run dev
+
+Expected output:
+ready - started server on http://localhost:3000
+
+###### Verify in the Browser
+Open:
+
+http://localhost:3000
+
+
