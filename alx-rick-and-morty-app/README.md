@@ -109,4 +109,47 @@ Open:
 
 http://localhost:3000
 
+###### Create the "Buggy" Component Create components/ErrorProneComponent.tsx
+import React from 'react';
 
+const ErrorProneComponent: React.FC = () => {
+  // This will force the React rendering phase to fail
+  throw new Error('This is a test error!');
+};
+
+export default ErrorProneComponent;
+
+###### Trigger the Error in a Page Open pages/index.tsx (or your main landing page) and use the component.
+import ErrorBoundary from '@/components/ErrorBoundary';
+import ErrorProneComponent from '@/components/ErrorProneComponent';
+
+const Home: React.FC = () => {
+  return (
+    <div style={{ padding: "40px" }}>
+      <h1>Welcome to the Rick and Morty App</h1>
+      <p>The content below is wrapped in an Error Boundary:</p>
+      
+      <ErrorBoundary>
+        <ErrorProneComponent />
+      </ErrorBoundary>
+    </div>
+  );
+};
+
+export default Home;
+
+###### Save and Close Files
+Make sure:
+
+components/ErrorProneComponent.tsx is saved
+
+###### Run the Development Server
+npm run dev
+
+Expected output:
+ready - started server on http://localhost:3000
+
+###### Verify in the Browser
+Open:
+
+http://localhost:3000
